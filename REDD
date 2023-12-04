@@ -34,3 +34,53 @@ Traceback (most recent call last):
   File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/serialization.py", line 212, in __init__
     super(_open_file, self).__init__(open(name, mode))
 FileNotFoundError: [Errno 2] No such file or directory: 'path_to_images'
+
+
+Hyper-parameters: 
+ {'cfg': '../configs/MNIST/ConvIN/IPC10.yaml', 'dataset': 'MNIST', 'subset': 'imagenette', 'model': 'ConvNet', 'ipc': 10, 'eval_mode': 'S', 'num_eval': 1, 'eval_it': 500, 'epoch_eval_train': 1000, 'Iteration': 10000, 'lr_img': 100, 'lr_teacher': 0.01, 'lr_init': 0.01, 'batch_real': 256, 'batch_syn': 500, 'batch_train': 128, 'pix_init': 'samples_predicted_correctly', 'dsa': True, 'dsa_strategy': 'color_crop_cutout_flip_scale_rotate', 'data_path': '../dataset', 'buffer_path': '../buffer_storage/', 'expert_epochs': 2, 'syn_steps': 80, 'max_start_epoch': 20, 'min_start_epoch': 0, 'zca': True, 'load_all': False, 'no_aug': False, 'texture': False, 'canvas_size': 2, 'canvas_samples': 1, 'max_files': None, 'max_experts': None, 'force_save': False, 'ema_decay': 0.9995, 'lr_y': 2.0, 'Momentum_y': 0.9, 'project': 'MNIST_ipc10', 'threshold': 1.0, 'record_loss': False, 'Sequential_Generation': True, 'expansion_end_epoch': 1000, 'current_max_start_epoch': 10, 'skip_first_eva': True, 'parall_eva': False, 'lr_lr': 1e-05, 'res': 32, 'device': 'cpu', 'Initialize_Label_With_Another_Model': False, 'Initialize_Label_Model': '', 'Initialize_Label_Model_Dir': '', 'Label_Model_Timestamp': -1, 'zca_trans': ZCAWhitening(), 'im_size': [28, 28], 'dc_aug_param': None, 'dsa_param': <utils.utils_baseline.ParamDiffAug object at 0x7f7cbe896160>, '_wandb': {}, 'distributed': False}
+Evaluation model pool:  ['ConvNet']
+BUILDING DATASET
+  0%|                                                           | 0/60000 [00:00<?, ?it/s]/home/stevenubuntu/Documents/DATM-main/distill/DATM.py:108: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  labels_all.append(class_map[torch.tensor(sample[1]).item()])
+100%|███████████████████████████████████████████| 60000/60000 [00:00<00:00, 232675.42it/s]
+60000it [00:00, 2784723.42it/s]
+class c = 0: 5923 real images
+class c = 1: 6742 real images
+class c = 2: 5958 real images
+class c = 3: 6131 real images
+class c = 4: 5842 real images
+class c = 5: 5421 real images
+class c = 6: 5918 real images
+class c = 7: 6265 real images
+class c = 8: 5851 real images
+class c = 9: 5949 real images
+real images channel 0, mean = 0.0000, std = 0.3602
+/home/stevenubuntu/Documents/DATM-main/distill/DATM.py:133: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  /opt/conda/conda-bld/pytorch_1646756402876/work/torch/csrc/utils/tensor_new.cpp:210.)
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+Expert Dir: ../buffer_storage/MNIST/ConvNet
+loading file ../buffer_storage/MNIST/ConvNet/replay_buffer_0.pt
+Traceback (most recent call last):
+  File "/home/stevenubuntu/Documents/DATM-main/distill/DATM.py", line 589, in <module>
+    main(args)
+  File "/home/stevenubuntu/Documents/DATM-main/distill/DATM.py", line 193, in main
+    Temp_net = get_network(args.model, channel, num_classes, im_size, dist=False).to(device)  # get a random model
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 907, in to
+    return self._apply(convert)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 601, in _apply
+    param_applied = fn(param)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 905, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/cuda/__init__.py", line 216, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: No CUDA GPUs are available
+
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb:                                                                                
+wandb: Synced vibrant-river-3: https://wandb.ai/15121204/MNIST_ipc10/runs/2ylxl9ia
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20231204_102738-2ylxl9ia/logs
+
