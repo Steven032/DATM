@@ -7,3 +7,30 @@ Traceback (most recent call last):
 FileNotFoundError: [Errno 2] No such file or directory: '../configs/IPC10.yaml'
 (distillation) stevenubuntu@stevenubuntu:~/Documents/DATM-main/distill$ 
 
+
+6e4ca694905103978cdf1d7e7a988f55fbedeb92
+
+(distillation) stevenubuntu@stevenubuntu:~/Documents/DATM-main/distill$ python evaluation.py --lr_dir=path_to_lr --data_dir=path_to_images --label_dir=path_to_labels --zca
+CUDNN STATUS: True
+Files already downloaded and verified
+Files already downloaded and verified
+Train ZCA
+100%|██████████████████████████████████| 50000/50000 [00:01<00:00, 28283.90it/s]
+Test ZCA
+100%|██████████████████████████████████| 10000/10000 [00:00<00:00, 27518.01it/s]
+<class 'kornia.enhance.zca.ZCAWhitening'>
+Hyper-parameters: 
+ {'dataset': 'CIFAR10', 'subset': 'imagenette', 'model': 'ConvNet', 'eval_mode': 'S', 'epoch_eval_train': 1000, 'batch_real': 256, 'dsa': True, 'dsa_strategy': 'color_crop_cutout_flip_scale_rotate', 'data_path': 'data', 'zca': True, 'lr_teacher': 0.01, 'no_aug': False, 'batch_train': 128, 'parall_eva': False, 'data_dir': 'path_to_images', 'label_dir': 'path_to_labels', 'lr_dir': 'path_to_lr', 'device': 'cuda', 'zca_trans': ZCAWhitening(), 'im_size': (32, 32), 'dc_aug_param': None, 'dsa_param': <utils.utils_baseline.ParamDiffAug object at 0x7f6fff4e9400>, 'distributed': False}
+Evaluation model pool:  ['ConvNet']
+Traceback (most recent call last):
+  File "/home/stevenubuntu/Documents/DATM-main/distill/evaluation.py", line 108, in <module>
+    main(args)
+  File "/home/stevenubuntu/Documents/DATM-main/distill/evaluation.py", line 65, in main
+    image_syn_eval = torch.load(args.data_dir)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/serialization.py", line 231, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/torch/serialization.py", line 212, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'path_to_images'
