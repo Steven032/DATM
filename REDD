@@ -1,1 +1,9 @@
+(distillation) stevenubuntu@stevenubuntu:~/Documents/DATM-main/distill$ python DATM.py --cfg ../configs/IPC10.yaml
+Traceback (most recent call last):
+  File "/home/stevenubuntu/Documents/DATM-main/distill/DATM.py", line 584, in <module>
+    cfg.merge_from_file(args.cfg)
+  File "/home/stevenubuntu/anaconda3/envs/distillation/lib/python3.9/site-packages/yacs/config.py", line 211, in merge_from_file
+    with open(cfg_filename, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '../configs/IPC10.yaml'
+(distillation) stevenubuntu@stevenubuntu:~/Documents/DATM-main/distill$ 
 
