@@ -1,3 +1,9 @@
+python DATM.py --cfg ../configs/MNIST/ConvIN/IPC1.yaml
+
+cd buffer
+python buffer_FTD.py --dataset=MNIST --model=ConvNet --train_epochs=10 --num_experts=20 --zca --buffer_path=../buffer_storage/ --data_path=../dataset/ --rho_max=0.01 --rho_min=0.01 --alpha=0.3 --lr_teacher=0.01 --mom=0. --batch_train=256
+
+
 (distillation) stevenubuntu@stevenubuntu:~/Documents/DATM-main/distill$ python DATM.py --cfg ../configs/IPC10.yaml
 Traceback (most recent call last):
   File "/home/stevenubuntu/Documents/DATM-main/distill/DATM.py", line 584, in <module>
